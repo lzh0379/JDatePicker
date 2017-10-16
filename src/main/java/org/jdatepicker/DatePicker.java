@@ -67,4 +67,13 @@ public interface DatePicker extends DatePanel {
      */
     void setTextfieldColumns(int columns);
 
+    /**
+     * Show the popup window
+     */
+    void showPopup();
+
+    /**
+     * Hide the popup window
+     */
+    void hidePopup();
 }

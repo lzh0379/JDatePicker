@@ -859,10 +859,12 @@ public class JDatePanel extends JComponent implements DatePanel {
                 return;
             }
 
-            if (arg0.getSource() == internalView.getMonthLabel()) {
-                internalView.getMonthPopupMenu().setLightWeightPopupEnabled(false);
-                internalView.getMonthPopupMenu().show((Component) arg0.getSource(), arg0.getX(), arg0.getY());
-            } else if (arg0.getSource() == internalView.getTodayLabel()) {
+	    if (arg0.getSource() == internalView.getMonthLabel()) {
+		// Disable popup menu
+		// internalView.getMonthPopupMenu().setLightWeightPopupEnabled(false);
+		// internalView.getMonthPopupMenu().show((Component)
+		// arg0.getSource(), arg0.getX(), arg0.getY());
+	    } else if (arg0.getSource() == internalView.getTodayLabel()) {
                 Calendar today = Calendar.getInstance();
                 internalModel.getModel().setDate(today.get(Calendar.YEAR), today.get(Calendar.MONTH), today.get(Calendar.DATE));
             } else if (arg0.getSource() == internalView.getDayTable()) {

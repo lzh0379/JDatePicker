@@ -133,6 +133,7 @@ public class JDatePicker extends JComponent implements DatePicker {
      * Create a JDatePicker with a custom date model.
      *
      * @param model a custom date model
+     * @param dateFormat the date format
      */
     public JDatePicker(DateModel<?> model, String dateFormat) {
         this(new JDatePanel(model), dateFormat);        

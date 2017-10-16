@@ -7,9 +7,9 @@
     <version>7</version>
   </parent>
 
-  <groupId>lzh0379</groupId>
+  <groupId>io.github.lzh0379</groupId>
   <artifactId>jdatepicker</artifactId>
-  <version>2.0.1</version>
+  <version>2.0.2</version>
   <packaging>jar</packaging>
   <name>jdatepicker</name>
   <description>JDatePicker and JDatePanel is a Java Swing component. It is designed with the Model View Controller pattern and it uses the Java Calendar object as the model. The component may be used via a popup control or embedded on a panel.</description>

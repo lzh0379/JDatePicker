@@ -11,7 +11,7 @@ public class DatePickerKeyListener implements KeyListener {
     private final JDatePicker datePicker;
 
     public DatePickerKeyListener(JDatePicker owner) {
-	this.datePicker = owner;
+        this.datePicker = owner;
     }
 
     /**
@@ -23,7 +23,7 @@ public class DatePickerKeyListener implements KeyListener {
 
     private final String TYPING_DATE_FORMAT_1 = "dd/MM/yyyy";
 
-    private final String TYPING_DATE_FORMAT_2 = "dd/MM/yyyy";
+    private final String TYPING_DATE_FORMAT_2 = "yyyy/MM/dd";
 
     public void keyTyped(KeyEvent event) {
         Pattern typing = null;
@@ -37,76 +37,76 @@ public class DatePickerKeyListener implements KeyListener {
             return;
         }
 
-	JTextField field = (JTextField) event.getSource();
+        JTextField field = (JTextField) event.getSource();
 
-	char keyChar = event.getKeyChar();
-	if (keyChar >= '0' && keyChar <= '9') {
-	    String input = field.getText();
-	    int start = field.getSelectionStart();
-	    int end = field.getSelectionEnd();
+        char keyChar = event.getKeyChar();
+        if (keyChar >= '0' && keyChar <= '9') {
+            String input = field.getText();
+            int start = field.getSelectionStart();
+            int end = field.getSelectionEnd();
 
-	    String leftText = input.substring(0, start);
-	    String rightText = input.substring(end);
-	    String newValue = leftText + keyChar + rightText;
+            String leftText = input.substring(0, start);
+            String rightText = input.substring(end);
+            String newValue = leftText + keyChar + rightText;
 
-	    Matcher m = typing.matcher(newValue);
-	    if (m.find()) {
-		String dateText = "";
+            Matcher m = typing.matcher(newValue);
+            if (m.find()) {
+                String dateText = "";
 
-		if (m.group(1) != null) {
-		    dateText += m.group(1);
-		}
+                if (m.group(1) != null) {
+                    dateText += m.group(1);
+                }
 
-		if (m.group(4) != null) {
-		    dateText += "/";
-		    dateText += m.group(4);
-		}
+                if (m.group(4) != null) {
+                    dateText += "/";
+                    dateText += m.group(4);
+                }
 
-		if (m.group(5) != null) {
-		    dateText += "/";
-		    dateText += m.group(5);
-		}
+                if (m.group(5) != null) {
+                    dateText += "/";
+                    dateText += m.group(5);
+                }
 
-		System.out.println(dateText);
-		field.setText(dateText);
+                System.out.println(dateText);
+                field.setText(dateText);
 
-		// If not appending at the end
-		if (end < input.length()) {
-		    try {
-			// Move the caret to right position
-			String leading = Pattern.quote(leftText);
-			Pattern p = Pattern.compile(leading + ".*?(" + keyChar + ").*?");
-			Matcher caret = p.matcher(dateText);
-			if (caret.find()) {
-			    field.setSelectionStart(caret.end(1));
-			    field.setSelectionEnd(caret.end(1));
-			}
-		    } catch (Exception e) {
-			// ignore the expression error
-		    }
-		}
-	    }
+                // If not appending at the end
+                if (end < input.length()) {
+                    try {
+                        // Move the caret to right position
+                        String leading = Pattern.quote(leftText);
+                        Pattern p = Pattern.compile(leading + ".*?(" + keyChar + ").*?");
+                        Matcher caret = p.matcher(dateText);
+                        if (caret.find()) {
+                            field.setSelectionStart(caret.end(1));
+                            field.setSelectionEnd(caret.end(1));
+                        }
+                    } catch (Exception e) {
+                        // ignore the expression error
+                    }
+                }
+            }
 
-	    event.setKeyChar('\0');
-	} else if (keyChar == '/') {
-	    // Accept the separator char
-	} else {
-	    event.setKeyChar('\0');
-	}
+            event.setKeyChar('\0');
+        } else if (keyChar == '/') {
+            // Accept the separator char
+        } else {
+            event.setKeyChar('\0');
+        }
     }
 
     public void keyPressed(KeyEvent event) {
-	if (event.getKeyCode() == KeyEvent.VK_UP) {
-	    datePicker.showPopup();
-	} else if (event.getKeyCode() == KeyEvent.VK_DOWN) {
-	    datePicker.showPopup();
-	} else if (event.getKeyCode() == KeyEvent.VK_SPACE) {
-	    // Press space to show popup
-	    event.setKeyCode(0);
-	    datePicker.showPopup();
-	} else if (event.getKeyCode() == KeyEvent.VK_ESCAPE) {
-	    datePicker.hidePopup();
-	}
+        if (event.getKeyCode() == KeyEvent.VK_UP) {
+            datePicker.showPopup();
+        } else if (event.getKeyCode() == KeyEvent.VK_DOWN) {
+            datePicker.showPopup();
+        } else if (event.getKeyCode() == KeyEvent.VK_SPACE) {
+            // Press space to show popup
+            event.setKeyCode(0);
+            datePicker.showPopup();
+        } else if (event.getKeyCode() == KeyEvent.VK_ESCAPE) {
+            datePicker.hidePopup();
+        }
     }
 
     public void keyReleased(KeyEvent event) {

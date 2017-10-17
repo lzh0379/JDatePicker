@@ -19,7 +19,7 @@ public class DatePickerKeyListener implements KeyListener {
      */
     private final Pattern TYPING_1 = Pattern.compile("^(\\d\\d?)\\/?(((\\d\\d?)\\/?)?(\\d{1,4})?\\/?)?");
 
-    private final Pattern TYPING_2 = Pattern.compile("^(\\d\\d\\d\\d)\\/?(((\\d\\d?)\\/?)?(\\d{1,2})?\\/?)?");
+    private final Pattern TYPING_2 = Pattern.compile("^(\\d{1,4})\\/?(((\\d\\d?)\\/?)?(\\d{1,2})?\\/?)?");
 
     private final String TYPING_DATE_FORMAT_1 = "dd/MM/yyyy";
 
